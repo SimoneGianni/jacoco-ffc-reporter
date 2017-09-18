@@ -1,0 +1,38 @@
+<project name="Example" xmlns:jacoco="antlib:org.jacoco.ant">
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="lib/jacocoant.jar"/>
+    </taskdef>
+
+    <jacoco:report>
+                            
+        <executiondata>
+	    <file file="${env.BASE_DIR}/unittest_output/coverage/jacoco.merged"/>
+            <!--fileset dir=".">
+	        <include name="**/test.exec"/>
+	    </fileset-->
+        </executiondata>
+                            
+        <structure name="Example Project">
+            <classfiles>
+                <fileset dir=".">
+			<include name="**/*.class"/>
+			<exclude name="**/bin/**/*"/>
+			<exclude name="build-ci/**/*"/>
+			<exclude name="**/OsUtilTest.*"/>
+			<exclude name="**/ReflectionUtils.*"/>
+			<exclude name="**/TestTokenUtil.*"/>
+			<exclude name="**/javassist/**/*"/>
+		</fileset>
+            </classfiles>
+            <sourcefiles encoding="UTF-8">
+                <fileset dir=".">
+			<include name="**/*.java"/>
+		</fileset>
+            </sourcefiles>
+        </structure>
+                            
+        <html destdir="local-report"/>
+                            
+    </jacoco:report>
+
+</project>
