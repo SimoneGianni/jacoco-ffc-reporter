@@ -3,36 +3,67 @@
         <classpath path="lib/jacocoant.jar"/>
     </taskdef>
 
-    <jacoco:report>
+    <target name="merged">
+        <jacoco:report>
                             
-        <executiondata>
-	    <file file="${env.BASE_DIR}/unittest_output/coverage/jacoco.merged"/>
-            <!--fileset dir=".">
-	        <include name="**/test.exec"/>
-	    </fileset-->
-        </executiondata>
+            <executiondata>
+    	        <file file="${env.BASE_DIR}/unittest_output/coverage/jacoco.merged"/>
+            </executiondata>
                             
-        <structure name="Example Project">
-            <classfiles>
+            <structure name="Example Project">
+                <classfiles>
+                    <fileset dir=".">
+	    		<include name="**/*.class"/>
+	    		<exclude name="**/bin/**/*"/>
+	    		<exclude name="build-ci/**/*"/>
+	    		<exclude name="**/OsUtilTest.*"/>
+	    		<exclude name="**/ReflectionUtils.*"/>
+	    		<exclude name="**/TestTokenUtil.*"/>
+	    		<exclude name="**/javassist/**/*"/>
+	    	</fileset>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir=".">
+		    	<include name="**/*.java"/>
+		    </fileset>
+                </sourcefiles>
+            </structure>
+                            
+            <html destdir="local-report"/>
+                            
+        </jacoco:report>
+    </target>
+    <target name="sparse">
+        <jacoco:report>
+                            
+            <executiondata>
                 <fileset dir=".">
-			<include name="**/*.class"/>
-			<exclude name="**/bin/**/*"/>
-			<exclude name="build-ci/**/*"/>
-			<exclude name="**/OsUtilTest.*"/>
-			<exclude name="**/ReflectionUtils.*"/>
-			<exclude name="**/TestTokenUtil.*"/>
-			<exclude name="**/javassist/**/*"/>
-		</fileset>
-            </classfiles>
-            <sourcefiles encoding="UTF-8">
-                <fileset dir=".">
-			<include name="**/*.java"/>
-		</fileset>
-            </sourcefiles>
-        </structure>
+    	            <include name="**/test.exec"/>
+    	        </fileset>
+            </executiondata>
                             
-        <html destdir="local-report"/>
+            <structure name="Example Project">
+                <classfiles>
+                    <fileset dir=".">
+	    		<include name="**/*.class"/>
+	    		<exclude name="**/bin/**/*"/>
+	    		<exclude name="build-ci/**/*"/>
+	    		<exclude name="**/OsUtilTest.*"/>
+	    		<exclude name="**/ReflectionUtils.*"/>
+	    		<exclude name="**/TestTokenUtil.*"/>
+	    		<exclude name="**/javassist/**/*"/>
+	    	</fileset>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir=".">
+		    	<include name="**/*.java"/>
+		    </fileset>
+                </sourcefiles>
+            </structure>
                             
-    </jacoco:report>
+            <html destdir="local-report"/>
+                            
+        </jacoco:report>
 
+    </target>
 </project>
