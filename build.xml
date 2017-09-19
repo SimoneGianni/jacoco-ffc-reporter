@@ -46,12 +46,15 @@
                 <classfiles>
                     <fileset dir=".">
 	    		<include name="**/*.class"/>
+			<!-- Excludes for Firewall -->
 	    		<exclude name="**/bin/**/*"/>
 	    		<exclude name="build-ci/**/*"/>
 	    		<exclude name="**/OsUtilTest.*"/>
 	    		<exclude name="**/ReflectionUtils.*"/>
 	    		<exclude name="**/TestTokenUtil.*"/>
 	    		<exclude name="**/javassist/**/*"/>
+			<!-- Excludes for groovy -->
+			<exclude name="**/DesignPatternsTest.*"/>
 	    	</fileset>
                 </classfiles>
                 <sourcefiles encoding="UTF-8">
