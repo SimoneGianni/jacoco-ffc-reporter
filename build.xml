@@ -55,6 +55,7 @@
 	    		<exclude name="**/javassist/**/*"/>
 			<!-- Excludes for groovy -->
 			<exclude name="**/DesignPatternsTest.*"/>
+			<exclude name="**/LittleClosureTest.*"/>
 	    	</fileset>
                 </classfiles>
                 <sourcefiles encoding="UTF-8">
